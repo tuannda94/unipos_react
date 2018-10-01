@@ -5,12 +5,27 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "axios": "^0.18.0",
+    "babel-loader": "^7.1.4",
+    "bootstrap": "^4.1.1",
+    "cross-env": "^5.1.6",
+    "css-loader": "^0.28.11",
+    "html-loader": "^0.5.5",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "style-loader": "^0.21.0"
+  },
+  "devDependencies": {
+    "laravel-mix": "^2.1.14",
+    "node-sass": "^4.9.3",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-latest": "^6.24.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   }
 }
