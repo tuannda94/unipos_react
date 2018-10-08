@@ -8,7 +8,7 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest" href="./manifest.json">
+    <!-- <link rel="manifest" href="./manifest.json"> -->
     <link rel="shortcut icon" href="./favicon.ico">
     <!-- <link rel="stylesheet" href="./css/app.css"> -->
     <!--
@@ -27,6 +27,7 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
+    <div id="content"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -38,6 +39,6 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-  <script src="./js/app.js"></script>
-  <script src="./js/background.js"></script>
+  <script async src="./js/popup/app.js"></script>
+  <script async src="./js/background.js"></script>
 </html>

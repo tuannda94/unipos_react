@@ -1,4 +1,4 @@
-import commons from 'Utils/commons.js';
+import commons from 'Utils/commons';
 
 let url = '';
 let userId = '';
@@ -11,10 +11,6 @@ chrome.tabs.onUpdated.addListener(function () {
             if (matches && matches[1] && matches[1] !== userId) {
                 userId = matches[1];
                 chrome.tabs.sendMessage(tabs[0].id, { message: "onPageLoad", id: matches[1]});
-            } else if (url.match(commons.CW_URL_MATCH_QUERY)) {
-                matches = url.match(commons.CW_URL_MATCH_QUERY);
-                console.log(matches);
-                chrome.tabs.sendMessage(tabs[0].id, { message: "onCWPageLoad", id: matches});
             }
         }
     });
@@ -28,10 +24,6 @@ chrome.runtime.onMessage.addListener(function (params) {
             if (matches !== null && matches[1]) {
                 userId = matches[1];
                 chrome.tabs.sendMessage(tabs[0].id, { message: "onPageLoad", id: matches[1] });
-            } else if (url.match(commons.CW_URL_MATCH_QUERY)) {
-                matches = url.match(commons.CW_URL_MATCH_QUERY);
-                console.log(matches);
-                chrome.tabs.sendMessage(tabs[0].id, { message: "onCWPageLoad", id: matches});
             }
         })
     }

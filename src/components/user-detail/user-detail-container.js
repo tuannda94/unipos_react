@@ -1,12 +1,14 @@
-import env from 'codebaseDir/env.js';
-import { unipos } from 'codebaseDir/config/unipos.js';
-let html = require('codebaseDir/views/app.html');
+import React from 'react'
+import UserDetail from './user-detail';
+import { commons } from 'Utils/commons';
+// let html = require('codebaseDir/views/app.html');
 
-class ProfileController
-{
-    constructor(data) {
-        this.maxRequestResult = unipos.max_request_result;
-        this.requestHandler = data.uniposProfileRequestHandler;
+class UserDetailContainer extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.maxRequestResult = commons.MAX_REQUEST_RESULT;
+        this.requestHandler = props.uniposProfileRequestHandler;
         this.receivedCards = [];
         this.sentCards = [];
         this.clappedCards = [];
@@ -87,8 +89,7 @@ class ProfileController
         }
     }
 
-    firstLoad()
-    {
+    firstLoad() {
         return this.receivedCards.length == 0 &&
                 this.sentCards.length == 0 &&
                 this.clappedCards.length == 0 &&
@@ -132,4 +133,4 @@ class ProfileController
     }
 }
 
-export { ProfileController };
+export default UserDetailContainer;
