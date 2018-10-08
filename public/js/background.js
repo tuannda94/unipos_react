@@ -60,30 +60,35 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 13:
+/******/ ([
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
-
-/***/ 14:
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _commons = __webpack_require__(15);
+var _commons = __webpack_require__(7);
 
 var _commons2 = _interopRequireDefault(_commons);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var url = '';
 var userId = '';
@@ -123,8 +128,7 @@ chrome.runtime.onMessage.addListener(function (params) {
 });
 
 /***/ }),
-
-/***/ 15:
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -144,5 +148,4 @@ var commons = {
 exports.default = commons;
 
 /***/ })
-
-/******/ });
+/******/ ]);
