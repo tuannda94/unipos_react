@@ -60,29 +60,26 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */
+/******/ ({
+
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(24);
 
 
 /***/ }),
-/* 6 */
+
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _commons = __webpack_require__(7);
+var _commons = __webpack_require__(4);
 
 var _commons2 = _interopRequireDefault(_commons);
 
@@ -101,10 +98,6 @@ chrome.tabs.onUpdated.addListener(function () {
             if (matches && matches[1] && matches[1] !== userId) {
                 userId = matches[1];
                 chrome.tabs.sendMessage(tabs[0].id, { message: "onPageLoad", id: matches[1] });
-            } else if (url.match(_commons2.default.CW_URL_MATCH_QUERY)) {
-                matches = url.match(_commons2.default.CW_URL_MATCH_QUERY);
-                console.log(matches);
-                chrome.tabs.sendMessage(tabs[0].id, { message: "onCWPageLoad", id: matches });
             }
         }
     });
@@ -118,17 +111,14 @@ chrome.runtime.onMessage.addListener(function (params) {
             if (matches !== null && matches[1]) {
                 userId = matches[1];
                 chrome.tabs.sendMessage(tabs[0].id, { message: "onPageLoad", id: matches[1] });
-            } else if (url.match(_commons2.default.CW_URL_MATCH_QUERY)) {
-                matches = url.match(_commons2.default.CW_URL_MATCH_QUERY);
-                console.log(matches);
-                chrome.tabs.sendMessage(tabs[0].id, { message: "onCWPageLoad", id: matches });
             }
         });
     }
 });
 
 /***/ }),
-/* 7 */
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -140,12 +130,12 @@ Object.defineProperty(exports, "__esModule", {
 var commons = {
     BASE_URL: "https://unipos.me/",
     API_URL: "https://unipos.me/q/jsonrpc",
-    CW_URL: "https://www.chatwork.com",
     BASE_URL_MATCH_QUERY: /https:\/\/unipos.me\/.*?i=(.*)/,
-    CW_URL_MATCH_QUERY: /https:\/\/www.chatwork.com\/.*/
+    MAX_REQUEST_RESULT: 500000
 };
 
 exports.default = commons;
 
 /***/ })
-/******/ ]);
+
+/******/ });

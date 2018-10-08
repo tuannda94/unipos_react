@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
-mix.react('src/index.js', 'public/js/app.js')
+mix.react('src/index.js', 'public/js/popup/app.js')
+    .react('src/content.js', 'public/js/content/app.js')
     .js('src/background.js', 'public/js/background.js')
     .setPublicPath('public');
     // .sass('src/App.scss', 'public/js/');

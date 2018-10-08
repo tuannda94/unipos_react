@@ -1,13 +1,13 @@
-import env from 'codebaseDir/env.js';
-import { BaseRequest } from 'frameworkDir/Http/Requests/BaseRequest.js';
+import React from 'react';
+import commons from 'Utils/commons';
+import makeRequest from 'Utils/helpers';
 
-class UniposProfileRequestHandler extends BaseRequest
-{
-    constructor(data) {
+class Api extends React.Component {
+    constructor(props) {
         super();
-        this.baseUrl = env.BASE_URL;
-        this.apiUrl = env.API_URL;
-        this.maxRequestResult = data.maxRequestResult;
+        this.baseUrl = commons.BASE_URL;
+        this.apiUrl = commons.API_URL;
+        this.maxRequestResult = commons.MAX_REQUEST_RESULT;
     }
 
     async received(offset = "") {
@@ -16,7 +16,7 @@ class UniposProfileRequestHandler extends BaseRequest
         let memberId = params[1].substring(params[1].indexOf("=") + 1);
         let data = this.getRequestData(memberId, "received", offset);
 
-        return await this.makeRequest(data, token, true);
+        return await makeRequest(data, token, true);
     }
 
     async sent(offset = "") {
@@ -25,7 +25,7 @@ class UniposProfileRequestHandler extends BaseRequest
         let memberId = params[1].substring(params[1].indexOf("=") + 1);
         let data = this.getRequestData(memberId, "sent", offset);
 
-        return await this.makeRequest(data, token, true);
+        return await makeRequest(data, token, true);
     }
 
     async clapped(offset = "") {
@@ -34,7 +34,7 @@ class UniposProfileRequestHandler extends BaseRequest
         let memberId = params[1].substring(params[1].indexOf("=") + 1);
         let data = this.getRequestData(memberId, "clapped", offset);
 
-        return await this.makeRequest(data, token, true);
+        return await makeRequest(data, token, true);
     }
 
     async profile() {
@@ -43,7 +43,7 @@ class UniposProfileRequestHandler extends BaseRequest
         let memberId = params[1].substring(params[1].indexOf("=") + 1);
         let data = this.getRequestData(memberId, "profile", "", "GetMemberDetail");
 
-        return await this.makeRequest(data, token, true);
+        return await makeRequest(data, token, true);
     }
 
     async suggestion(term, limit = 100) {
@@ -52,7 +52,7 @@ class UniposProfileRequestHandler extends BaseRequest
         let memberId = params[1].substring(params[1].indexOf("=") + 1);
         let data = this.getRequestData(memberId, "suggestion", "", "FindSuggestMembers");
 
-        return await this.makeRequest(data, token, true);
+        return await makeRequest(data, token, true);
     }
 
     getRequestData(memberId, type = "received", offset = "", method = "GetCards2") {
@@ -93,4 +93,4 @@ class UniposProfileRequestHandler extends BaseRequest
     }
 }
 
-export default UniposProfileRequestHandler;
+export default Api;
