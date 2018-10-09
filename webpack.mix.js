@@ -10,9 +10,8 @@ mix.react('src/index.js', 'public/js/popup/app.js')
     resolve: {
         alias: {
             src: path.resolve(__dirname, './src'),
-            Api: path.resolve(__dirname, './src/api'),
+            Services: path.resolve(__dirname, './src/services'),
             Components: path.resolve(__dirname, './src/components'),
-            Routes: path.resolve(__dirname, './src/routes'),
             Utils: path.resolve(__dirname, './src/utils')
         }
     }
