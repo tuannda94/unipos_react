@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './user-detail.css';
 
-const UserDetail  = ({user_avatar, userName, email, groupName, totalReceivedPoint, totalSentPoint, totalClappedPoint}) => (
+const UserDetail = ({ userProfile, totalReceivedPoint, totalSentPoint, totalClappedPoint }) => (
     <div className="unipos-wrapper">
         <div className="headers">
             <div className="header-avatar">
-                <img src={user_avatar} className="involvingMember_picture"/>
+                <img src={userProfile.member.picture_url} className="involvingMember_picture"/>
             </div>
             <div className="header-profile-detail">
                 <div>
@@ -13,7 +13,7 @@ const UserDetail  = ({user_avatar, userName, email, groupName, totalReceivedPoin
                         <label>Name</label>
                     </div>
                     <div className="default-label">
-                        <label>{userName}</label>
+                        <label>{userProfile.member.display_name}</label>
                     </div>
                 </div>
                 <div>
@@ -21,7 +21,7 @@ const UserDetail  = ({user_avatar, userName, email, groupName, totalReceivedPoin
                         <label>E-mail</label>
                     </div>
                     <div className="default-label">
-                        <label>{email}</label>
+                        <label>{userProfile.member.email_address}</label>
                     </div>
                 </div>
                 <div>
@@ -29,7 +29,7 @@ const UserDetail  = ({user_avatar, userName, email, groupName, totalReceivedPoin
                         <label>Groups</label>
                     </div>
                     <div className="default-label">
-                        <label>{groupName}</label>
+                        <label>{userProfile.groups[0].name}</label>
                     </div>
                 </div>
             </div>
