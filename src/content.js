@@ -20,23 +20,12 @@ chrome.runtime.onMessage.addListener((params) => {
             let urlParams = window.location.href.replace(commons.BASE_URL, '').split("?")[1];
             if (urlParams !== null && urlParams !== undefined) {
                 let currentUserId = urlParams.split("=")[1];
-                // let route = dispatch();
-                // console.log(route);
-
-                // if (Object.keys(route).length) {
-                    const loadedStates = ['complete', 'loaded', 'interactive'];
-                    if (loadedStates.includes(document.readyState) && document.body) {
-                        run();
-                    } else {
-                        window.addEventListener('DOMContentLoaded', run, false);
-                    }
-
-                    // let action = route.action;
-                    // let controller = route.controller.substring(route.controller.lastIndexOf('/') + 1);
-                    // controller = controller.charAt(0).toLowerCase() + controller.slice(1);
-                    // console.log(controllers.default[controller][action]);
-                    // controllers.default[controller][action]();
-                // }
+                const loadedStates = ['complete', 'loaded', 'interactive'];
+                if (loadedStates.includes(document.readyState) && document.body) {
+                    run();
+                } else {
+                    window.addEventListener('DOMContentLoaded', run, false);
+                }
             }
         }
     }

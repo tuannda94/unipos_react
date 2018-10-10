@@ -13,7 +13,7 @@ const UserDetail = ({ userProfile, totalReceivedPoint, totalSentPoint, totalClap
                         <label>Name</label>
                     </div>
                     <div className="default-label">
-                        <label>{userProfile.member.display_name}</label>
+                        <label title={userProfile.member.display_name}>{userProfile.member.display_name}</label>
                     </div>
                 </div>
                 <div>
@@ -21,7 +21,7 @@ const UserDetail = ({ userProfile, totalReceivedPoint, totalSentPoint, totalClap
                         <label>E-mail</label>
                     </div>
                     <div className="default-label">
-                        <label>{userProfile.member.email_address}</label>
+                        <label title={userProfile.member.email_address}>{userProfile.member.email_address}</label>
                     </div>
                 </div>
                 <div>
@@ -29,7 +29,7 @@ const UserDetail = ({ userProfile, totalReceivedPoint, totalSentPoint, totalClap
                         <label>Groups</label>
                     </div>
                     <div className="default-label">
-                        <label>{userProfile.groups[0].name}</label>
+                        <label title={userProfile.groups[0].name}>{userProfile.groups[0].name}</label>
                     </div>
                 </div>
             </div>

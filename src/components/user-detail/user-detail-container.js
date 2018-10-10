@@ -96,7 +96,6 @@ class UserDetailContainer extends React.Component {
                 break;
             }
         }
-
     }
 
     firstLoad() {
@@ -107,31 +106,6 @@ class UserDetailContainer extends React.Component {
                 clappedCards.length == 0 &&
                 !Object.keys(userProfile).length
     }
-
-    // display() {
-    //     let groups = this.userProfile.groups[0] || '';
-    //     let template = this.template;
-
-    //     template = template.replace("{user_avatar}", this.userProfile.member.picture_url);
-    //     template = template.replace("{userName}", this.userProfile.member.display_name);
-    //     template = template.replace("{email}", this.userProfile.member.email_address);
-    //     template = template.replace("{groupName}", groups.name != undefined ? groups.name : '');
-    //     template = template.replace("{totalReceivedPoint}", this.totalReceivedPoint);
-    //     template = template.replace("{totalSentPoint}", this.totalSentPoint);
-    //     template = template.replace("{totalClappedPoint}", this.totalClappedPoint);
-
-    //     let itv = setInterval(() => {
-    //         if ($('.unipos-wrapper').length) {
-    //             $('.unipos-wrapper').remove();
-    //         }
-    //         if ($('#js_body').length) {
-    //             if ($('#js_body').length) {
-    //                 $('#js_body').append(template);
-    //                 clearInterval(itv);
-    //             }
-    //         }
-    //     }, 500);
-    // }
 
     clearData() {
         this.setState({
@@ -146,7 +120,6 @@ class UserDetailContainer extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         const {userProfile} = this.state;
 
         return (
