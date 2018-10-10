@@ -1,15 +1,42 @@
 .unipos-wrapper {
-  position: fixed;
-  overflow-y: scroll;
-  overflow-x: hidden;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
   right: 2%;
-  top: 15%;
+  top: 8%;
   width: 15%;
   overflow: hidden;
   border: 1px solid #dde2e2;
   border-radius: 20px;
   float: right;
   box-sizing: border-box;
+  font-size: 14px;
+}
+
+.headers {
+  width: 100%;
+  text-align: center;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0)
+  ),
+  linear-gradient(to right, #8bdde1, #b5f5c1);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 135%;
+}
+
+.header-avatar {
+  margin-top: 20px;
+}
+
+.header-profile-detail {
+  margin-top: 20px;
+}
+
+.box {
+  width: 100%;
+  background: #fff;
 }
 
 .default-label {
@@ -31,21 +58,6 @@
   font-size: 17px;
 }
 
-.box {
-  width: 100%;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  background: #fff;
-}
-
-.header-avatar {
-  margin-top: 20px;
-}
-
-.header-profile-detail {
-  margin-top: 20px;
-}
-
 .tbox-left {
   text-align: center;
   width: 50%;
@@ -56,25 +68,13 @@
   width: 50%;
 }
 
-.headers {
-  width: 100%;
-  text-align: center;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0)
-  ),
-  linear-gradient(to right, #8bdde1, #b5f5c1);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 135%;
-}
-
 table {
   overflow: hidden;
 }
 
 td {
   text-align: center;
+  font-size: 14px;
 }
 
 .unipos-icon {
@@ -83,4 +83,14 @@ td {
   fill: inherit;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+@media(max-width: 1400px) {
+    .unipos-wrapper {
+        font-size: 12px;
+    }
+
+    td {
+        font-size: 12px;
+    }
 }
