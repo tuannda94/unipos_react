@@ -3,7 +3,7 @@ import App from './App';
 import commons from 'Utils/commons';
 import api from 'Services/flickr-api';
 
-class UserDetailContainer extends React.Component {
+class AppContainer extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,9 +13,17 @@ class UserDetailContainer extends React.Component {
     }
 
     componentDidMount() {
+        const url = api.getRandomPicture();
+        if (!this.state.imageUrl) {
+            this.setState({imageUrl: url});
+        }
+        // api.getRandomPicture();
     }
-
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(prevProps, prevState) {
+        const url = api.getRandomPicture();
+        if (this.state.imageUrl != prevState.imageUrl) {
+            this.setState({ imageUrl: url });
+        }
     }
 
     render() {
@@ -30,4 +38,4 @@ class UserDetailContainer extends React.Component {
     }
 }
 
-export default UserDetailContainer;
+export default AppContainer;

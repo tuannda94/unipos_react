@@ -14,23 +14,11 @@ export function makeRequest(data, token, unipos = false, method = 'POST') {
     .catch(error => error);
 }
 
-export default {
-    makeRequest
+export function makeRequestFlickr(url, callback) {
+    return axios.get(url).then(callback).catch(error => error);
 }
 
-export function getJSONP(url, success) {
-
-    var ud = '_' + +new Date,
-        script = document.createElement('script'),
-        head = document.getElementsByTagName('head')[0]
-               || document.documentElement;
-
-    window[ud] = function(data) {
-        head.removeChild(script);
-        success && success(data);
-    };
-
-    script.src = url.replace('callback=?', 'callback=' + ud);
-    head.appendChild(script);
-
+export default {
+    makeRequest,
+    makeRequestFlickr
 }

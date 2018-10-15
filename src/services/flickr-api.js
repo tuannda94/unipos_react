@@ -1,53 +1,35 @@
-getPicture ("36587311@N08", "test");
-function getPicture (the_user_id, your_div_id){
-    var apiKey = "80882b00609df75b919104b460459462"; // replace this with your API key
+import { makeRequestFlickr } from 'Utils/helpers';
 
-    // get an array of random photos
-    $.getJSON(
-        "http://api.flickr.com/services/rest/",
-        {
-            //method: 'flickr.interestingness.getList',
-            method: 'flickr.people.getPublicPhotos',
-            api_key: apiKey,
-            user_id: the_user_id,
-            format: 'json',
-            nojsoncallback: 1,
-            extras: "description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o",
-            per_page: 100 // you can increase this to get a bigger array
-        },
-        function(data){
+export function getRandomPicture() {
+    const url = 'https://api.flickr.com/services/rest/';
+    const apiKey = '80882b00609df75b919104b460459462';
+    const userId = '36587311@N08';
+    // const apiKey = 'b96f170e4a1b41aa034986f75a4e5e0e';
+    // const userId = '139350927@N08';
 
-            // if everything went good
-            if(data.stat == 'ok'){
-
-                // get a random id from the array
-                var photo = data.photos.photo[ Math.floor( Math.random() * data.photos.photo.length ) ];
-
-                // now call the flickr API and get the picture with a nice size
-                $.getJSON(
-                    "http://api.flickr.com/services/rest/",
-                    {
-                        method: 'flickr.photos.getSizes',
-                        api_key: apiKey,
-                        photo_id: photo.id,
-                        format: 'json',
-                        nojsoncallback: 1
-                    },
-                    function(response){
-                        if(response.stat == 'ok'){
-                            var the_url = response.sizes.size[5].source;
-                            return the_url;
+    makeRequestFlickr(
+        `${url}?method=flickr.people.getPublicPhotos&api_key=${apiKey}&user_id=${userId}&per_page=10&format=json&nojsoncallback=1`,
+        (data) => {
+            console.log(data.photos);
+            if (data.stat == 'ok') {
+                const photo = data.photos.photo[Math.floor(Math.random() * data.photos.photo.length)];
+                makeRequestFlickr(
+                    `${url}?method=flickr.people.getSizes&photo_id=${photo.id}&api_key=${apiKey}&format=json&nojsoncallback=1`,
+                    (data) => {
+                        if (data.stat == 'ok') {
+                            console.log(data.sizes.size[5].source);
+                            return data.sizes.size[5].source;
                         }
                         else{
                             return false;
                         }
                     }
-                );
-
-            }
-            else{
+                )
+            } else {
                 return false;
             }
         }
-    );
+    )
 }
+
+export default { getRandomPicture };

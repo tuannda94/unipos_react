@@ -6,6 +6,7 @@
     "permissions": ["tabs"],
     "background": {
         "scripts": ["public/js/background.js"]
+        // "persistent": false/true
     },
     "content_scripts": [
         {
