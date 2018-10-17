@@ -10,7 +10,7 @@ chrome.tabs.onUpdated.addListener(function () {
             let matches = url.match(commons.BASE_URL_MATCH_QUERY);
             if (matches && matches[1] && matches[1] !== userId) {
                 userId = matches[1];
-                chrome.tabs.sendMessage(tabs[0].id, { message: "onPageLoad", id: matches[1]});
+                chrome.tabs.sendMessage(tabs[0].id, { message: 'onPageLoad', id: matches[1]});
             }
         }
     });
@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(function (params) {
             let matches = url.match(commons.BASE_URL_MATCH_QUERY);
             if (matches !== null && matches[1]) {
                 userId = matches[1];
-                chrome.tabs.sendMessage(tabs[0].id, { message: "onPageLoad", id: matches[1] });
+                chrome.tabs.sendMessage(tabs[0].id, { message: 'onPageLoad', id: matches[1] });
             }
         })
     }

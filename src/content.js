@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import UserDetail from 'Components/user-detail/';
 import registerServiceWorker from './registerServiceWorker';
 import commons from 'Utils/commons';
-import {dispatch} from 'Utils/helpers';
 
-function run() {
-    ReactDOM.render(<UserDetail />, document.getElementById('user_detail_wrapper'));
+function run(id) {
+    ReactDOM.render(<UserDetail id={id} />, document.getElementById('user_detail_wrapper'));
     registerServiceWorker();
 }
 
@@ -17,12 +16,11 @@ document.getElementById('content').appendChild(user_detail_wrapper);
 chrome.runtime.onMessage.addListener((params) => {
     if (params.message === 'onPageLoad') {
         if (window.location.href.indexOf(commons.BASE_URL) != -1) {
-            let urlParams = window.location.href.replace(commons.BASE_URL, '').split("?")[1];
-            if (urlParams !== null && urlParams !== undefined) {
-                let currentUserId = urlParams.split("=")[1];
+            let urlParams = window.location.href.replace(commons.BASE_URL, '');
+            if (urlParams != 'member_not_found' && urlParams != null && urlParams != undefined) {
                 const loadedStates = ['complete', 'loaded', 'interactive'];
                 if (loadedStates.includes(document.readyState) && document.body) {
-                    run();
+                    run(params.id);
                 } else {
                     window.addEventListener('DOMContentLoaded', run, false);
                 }
@@ -31,4 +29,4 @@ chrome.runtime.onMessage.addListener((params) => {
     }
 });
 
-chrome.runtime.sendMessage({ message: "onPageLoad" });
+chrome.runtime.sendMessage({ message: 'onPageLoad' });
