@@ -15,6 +15,8 @@ user_detail_wrapper.setAttribute('id', 'user_detail_wrapper');
 document.getElementById('content').appendChild(user_detail_wrapper);
 
 chrome.runtime.onMessage.addListener((params) => {
+    console.log('chrome content on message load view', params);
+
     if (params.message === 'onPageLoad') {
         if (window.location.href.indexOf(commons.BASE_URL) != -1) {
             let urlParams = window.location.href.replace(commons.BASE_URL, '').split("?")[1];

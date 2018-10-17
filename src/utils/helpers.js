@@ -14,6 +14,11 @@ export function makeRequest(data, token, unipos = false, method = 'POST') {
     .catch(error => error);
 }
 
+export function makeRequestFlickr(url, callback) {
+    return axios.get(url).then(callback).catch(error => error);
+}
+
 export default {
-    makeRequest
+    makeRequest,
+    makeRequestFlickr
 }
