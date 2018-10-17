@@ -1,46 +1,33 @@
 import commons from 'Utils/commons';
 import {makeRequest} from 'Utils/helpers';
 
-export async function received(offset = "") {
-    let params = window.location.href.replace(commons.BASE_URL, '').split('?');
-    let token = localStorage.getItem('authnToken');
-    let memberId = params[1].substring(params[1].indexOf("=") + 1);
+const token = localStorage.getItem('authnToken');
+
+export async function received(memberId, offset = "") {
     let data = getRequestData(memberId, "received", offset);
 
     return await makeRequest(data, token, true);
 }
 
-export async function sent(offset = "") {
-    let params = window.location.href.replace(commons.BASE_URL, '').split('?');
-    let token = localStorage.getItem('authnToken');
-    let memberId = params[1].substring(params[1].indexOf("=") + 1);
+export async function sent(memberId, offset = "") {
     let data = getRequestData(memberId, "sent", offset);
 
     return await makeRequest(data, token, true);
 }
 
-export async function clapped(offset = "") {
-    let params = window.location.href.replace(commons.BASE_URL, '').split('?');
-    let token = localStorage.getItem('authnToken');
-    let memberId = params[1].substring(params[1].indexOf("=") + 1);
+export async function clapped(memberId, offset = "") {
     let data = getRequestData(memberId, "clapped", offset);
 
     return await makeRequest(data, token, true);
 }
 
-export async function profile() {
-    let params = window.location.href.replace(commons.BASE_URL, '').split('?');
-    let token = localStorage.getItem('authnToken');
-    let memberId = params[1].substring(params[1].indexOf("=") + 1);
+export async function profile(memberId) {
     let data = getRequestData(memberId, "profile", "", "GetMemberDetail");
 
     return await makeRequest(data, token, true);
 }
 
-export async function suggestion(term, limit = 100) {
-    let params = window.location.href.replace(commons.BASE_URL, '').split('?');
-    let token = localStorage.getItem('authnToken');
-    let memberId = params[1].substring(params[1].indexOf("=") + 1);
+export async function suggestion(memberId, term, limit = 100) {
     let data = getRequestData(memberId, "suggestion", "", "FindSuggestMembers");
 
     return await makeRequest(data, token, true);

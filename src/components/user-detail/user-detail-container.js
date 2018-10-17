@@ -22,37 +22,39 @@ class UserDetailContainer extends React.Component {
     componentDidMount() {
         this.profile();
     }
-
-    componentWillReceiveProps(nextProps) {
-        this.profile();
+    componentDidUpdate(prevProps) {
+        if (this.props.id != prevProps.id) {
+            this.profile();
+        }
     }
 
     async profile() {
         await this.clearData();
         let {receivedCards, sentCards, clappedCards, userProfile, allLoaded} = this.state;
+        let {id} = this.props;
 
         while (!allLoaded) {
             let requests = [];
             if (!Object.keys(userProfile).length) {
-                requests.push(api.profile());
+                requests.push(api.profile(id));
             }
 
             if (this.firstLoad() || (receivedCards.length != 0 && receivedCards.length % commons.MAX_REQUEST_RESULT == 0)) {
                 let lastCard = receivedCards[receivedCards.length - 1];
                 let offset = lastCard != undefined ? lastCard.id : '';
-                requests.push(api.received(offset));
+                requests.push(api.received(id, offset));
             }
 
             if (this.firstLoad() || (sentCards.length != 0 && sentCards.length % commons.MAX_REQUEST_RESULT == 0)) {
                 let lastCard = sentCards[sentCards.length - 1];
                 let offset = lastCard != undefined ? lastCard.id : '';
-                requests.push(api.sent(offset));
+                requests.push(api.sent(id, offset));
             }
 
             if (this.firstLoad() || (clappedCards.length != 0 && clappedCards.length % commons.MAX_REQUEST_RESULT == 0)) {
                 let lastCard = clappedCards[clappedCards.length - 1];
                 let offset = lastCard != undefined ? lastCard.id : '';
-                requests.push(api.clapped(offset));
+                requests.push(api.clapped(id, offset));
             }
 
             try {
